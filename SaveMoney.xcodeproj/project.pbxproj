@@ -7,21 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12C3F11B6D95083E8DFF827B /* Pods_SaveMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533888948059A73077F8B8C7 /* Pods_SaveMoney.framework */; };
 		443C4A37226F634000E825D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A36226F634000E825D3 /* AppDelegate.swift */; };
-		443C4A39226F634000E825D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A38226F634000E825D3 /* ViewController.swift */; };
+		443C4A39226F634000E825D3 /* ExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A38226F634000E825D3 /* ExpenditureViewController.swift */; };
 		443C4A3C226F634000E825D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443C4A3A226F634000E825D3 /* Main.storyboard */; };
 		443C4A3E226F634200E825D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443C4A3D226F634200E825D3 /* Assets.xcassets */; };
 		443C4A41226F634200E825D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443C4A3F226F634200E825D3 /* LaunchScreen.storyboard */; };
+		443C4A50226F644500E825D3 /* AddExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A4F226F644500E825D3 /* AddExpenditureViewController.swift */; };
+		443C4A52226F645700E825D3 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A51226F645700E825D3 /* IncomeViewController.swift */; };
+		443C4A54226F646700E825D3 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A53226F646700E825D3 /* AddIncomeViewController.swift */; };
+		443C4A56226F648400E825D3 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A55226F648400E825D3 /* StatisticsViewController.swift */; };
+		443C4A58226F649100E825D3 /* Expenditure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A57226F649100E825D3 /* Expenditure.swift */; };
+		443C4A5A22700A2F00E825D3 /* EditExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A5922700A2F00E825D3 /* EditExpenditureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00F0143109C199A26CD3033F /* Pods-SaveMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveMoney.release.xcconfig"; path = "Target Support Files/Pods-SaveMoney/Pods-SaveMoney.release.xcconfig"; sourceTree = "<group>"; };
 		443C4A33226F634000E825D3 /* SaveMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C4A36226F634000E825D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		443C4A38226F634000E825D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		443C4A38226F634000E825D3 /* ExpenditureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureViewController.swift; sourceTree = "<group>"; };
 		443C4A3B226F634000E825D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		443C4A3D226F634200E825D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		443C4A40226F634200E825D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		443C4A42226F634200E825D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		443C4A4F226F644500E825D3 /* AddExpenditureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenditureViewController.swift; sourceTree = "<group>"; };
+		443C4A51226F645700E825D3 /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
+		443C4A53226F646700E825D3 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
+		443C4A55226F648400E825D3 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		443C4A57226F649100E825D3 /* Expenditure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenditure.swift; sourceTree = "<group>"; };
+		443C4A5922700A2F00E825D3 /* EditExpenditureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpenditureViewController.swift; sourceTree = "<group>"; };
+		533888948059A73077F8B8C7 /* Pods_SaveMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaveMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B326554D1EF45A3401051853 /* Pods-SaveMoney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveMoney.debug.xcconfig"; path = "Target Support Files/Pods-SaveMoney/Pods-SaveMoney.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C3F11B6D95083E8DFF827B /* Pods_SaveMoney.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +57,8 @@
 			children = (
 				443C4A35226F634000E825D3 /* SaveMoney */,
 				443C4A34226F634000E825D3 /* Products */,
+				64A3DBD21C7104CD17C27672 /* Pods */,
+				DC372922A4CF2039165A11CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +74,68 @@
 			isa = PBXGroup;
 			children = (
 				443C4A36226F634000E825D3 /* AppDelegate.swift */,
-				443C4A38226F634000E825D3 /* ViewController.swift */,
-				443C4A3A226F634000E825D3 /* Main.storyboard */,
-				443C4A3D226F634200E825D3 /* Assets.xcassets */,
-				443C4A3F226F634200E825D3 /* LaunchScreen.storyboard */,
+				443C4A48226F635800E825D3 /* Model */,
+				443C4A4B226F63A000E825D3 /* Views */,
+				443C4A4A226F636B00E825D3 /* Controllers */,
+				443C4A4C226F63B600E825D3 /* Supporting Files */,
 				443C4A42226F634200E825D3 /* Info.plist */,
 			);
 			path = SaveMoney;
+			sourceTree = "<group>";
+		};
+		443C4A48226F635800E825D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				443C4A57226F649100E825D3 /* Expenditure.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		443C4A4A226F636B00E825D3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				443C4A38226F634000E825D3 /* ExpenditureViewController.swift */,
+				443C4A4F226F644500E825D3 /* AddExpenditureViewController.swift */,
+				443C4A5922700A2F00E825D3 /* EditExpenditureViewController.swift */,
+				443C4A51226F645700E825D3 /* IncomeViewController.swift */,
+				443C4A53226F646700E825D3 /* AddIncomeViewController.swift */,
+				443C4A55226F648400E825D3 /* StatisticsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		443C4A4B226F63A000E825D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				443C4A3A226F634000E825D3 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		443C4A4C226F63B600E825D3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				443C4A3D226F634200E825D3 /* Assets.xcassets */,
+				443C4A3F226F634200E825D3 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		64A3DBD21C7104CD17C27672 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B326554D1EF45A3401051853 /* Pods-SaveMoney.debug.xcconfig */,
+				00F0143109C199A26CD3033F /* Pods-SaveMoney.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DC372922A4CF2039165A11CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				533888948059A73077F8B8C7 /* Pods_SaveMoney.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 443C4A45226F634200E825D3 /* Build configuration list for PBXNativeTarget "SaveMoney" */;
 			buildPhases = (
+				C8C99448D66E40D5DE0D9E03 /* [CP] Check Pods Manifest.lock */,
 				443C4A2F226F634000E825D3 /* Sources */,
 				443C4A30226F634000E825D3 /* Frameworks */,
 				443C4A31226F634000E825D3 /* Resources */,
+				8E2BC4278782D93C6A3B7BD0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +206,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8E2BC4278782D93C6A3B7BD0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SaveMoney/Pods-SaveMoney-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IGLDropDownMenu/IGLDropDownMenu.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGLDropDownMenu.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SaveMoney/Pods-SaveMoney-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8C99448D66E40D5DE0D9E03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SaveMoney-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		443C4A2F226F634000E825D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				443C4A39226F634000E825D3 /* ViewController.swift in Sources */,
+				443C4A39226F634000E825D3 /* ExpenditureViewController.swift in Sources */,
+				443C4A50226F644500E825D3 /* AddExpenditureViewController.swift in Sources */,
+				443C4A5A22700A2F00E825D3 /* EditExpenditureViewController.swift in Sources */,
+				443C4A54226F646700E825D3 /* AddIncomeViewController.swift in Sources */,
+				443C4A56226F648400E825D3 /* StatisticsViewController.swift in Sources */,
+				443C4A58226F649100E825D3 /* Expenditure.swift in Sources */,
 				443C4A37226F634000E825D3 /* AppDelegate.swift in Sources */,
+				443C4A52226F645700E825D3 /* IncomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +409,7 @@
 		};
 		443C4A46226F634200E825D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B326554D1EF45A3401051853 /* Pods-SaveMoney.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +428,7 @@
 		};
 		443C4A47226F634200E825D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00F0143109C199A26CD3033F /* Pods-SaveMoney.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
