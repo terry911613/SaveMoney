@@ -19,6 +19,8 @@
 		443C4A56226F648400E825D3 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A55226F648400E825D3 /* StatisticsViewController.swift */; };
 		443C4A58226F649100E825D3 /* Expenditure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A57226F649100E825D3 /* Expenditure.swift */; };
 		443C4A5A22700A2F00E825D3 /* EditExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A5922700A2F00E825D3 /* EditExpenditureViewController.swift */; };
+		447D67E32272B01A00DBCBB9 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447D67E22272B01A00DBCBB9 /* Income.swift */; };
+		447D67E52272B04600DBCBB9 /* EditIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447D67E42272B04600DBCBB9 /* EditIncomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		443C4A55226F648400E825D3 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		443C4A57226F649100E825D3 /* Expenditure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenditure.swift; sourceTree = "<group>"; };
 		443C4A5922700A2F00E825D3 /* EditExpenditureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpenditureViewController.swift; sourceTree = "<group>"; };
+		447D67E22272B01A00DBCBB9 /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
+		447D67E42272B04600DBCBB9 /* EditIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIncomeViewController.swift; sourceTree = "<group>"; };
 		533888948059A73077F8B8C7 /* Pods_SaveMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaveMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B326554D1EF45A3401051853 /* Pods-SaveMoney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveMoney.debug.xcconfig"; path = "Target Support Files/Pods-SaveMoney/Pods-SaveMoney.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				443C4A57226F649100E825D3 /* Expenditure.swift */,
+				447D67E22272B01A00DBCBB9 /* Income.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 				443C4A5922700A2F00E825D3 /* EditExpenditureViewController.swift */,
 				443C4A51226F645700E825D3 /* IncomeViewController.swift */,
 				443C4A53226F646700E825D3 /* AddIncomeViewController.swift */,
+				447D67E42272B04600DBCBB9 /* EditIncomeViewController.swift */,
 				443C4A55226F648400E825D3 /* StatisticsViewController.swift */,
 			);
 			path = Controllers;
@@ -262,8 +268,10 @@
 				443C4A50226F644500E825D3 /* AddExpenditureViewController.swift in Sources */,
 				443C4A5A22700A2F00E825D3 /* EditExpenditureViewController.swift in Sources */,
 				443C4A54226F646700E825D3 /* AddIncomeViewController.swift in Sources */,
+				447D67E32272B01A00DBCBB9 /* Income.swift in Sources */,
 				443C4A56226F648400E825D3 /* StatisticsViewController.swift in Sources */,
 				443C4A58226F649100E825D3 /* Expenditure.swift in Sources */,
+				447D67E52272B04600DBCBB9 /* EditIncomeViewController.swift in Sources */,
 				443C4A37226F634000E825D3 /* AppDelegate.swift in Sources */,
 				443C4A52226F645700E825D3 /* IncomeViewController.swift in Sources */,
 			);

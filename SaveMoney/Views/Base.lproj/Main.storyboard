@@ -18,18 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Expenditure" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="h0l-gy-BfV">
-                                <rect key="frame" x="0.0" y="64" width="414" height="100"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="KjX-Hh-nsU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ExpenditureTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgE-Ua-mqA">
-                                <rect key="frame" x="0.0" y="172" width="414" height="515"/>
+                                <rect key="frame" x="0.0" y="272" width="414" height="415"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -66,12 +56,34 @@
                                     <outlet property="delegate" destination="02L-IK-IEU" id="O84-R1-FYu"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expenditure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVm-QM-VPy">
+                                <rect key="frame" x="0.0" y="64" width="414" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="zNj-it-Bgg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="total" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="h0l-gy-BfV">
+                                <rect key="frame" x="0.0" y="164" width="414" height="100"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="KjX-Hh-nsU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cex-bZ-e6e" firstAttribute="trailing" secondItem="lVm-QM-VPy" secondAttribute="trailing" id="6ih-6s-9Fn"/>
                             <constraint firstItem="h0l-gy-BfV" firstAttribute="leading" secondItem="cex-bZ-e6e" secondAttribute="leading" id="CVV-TN-j7h"/>
+                            <constraint firstItem="lVm-QM-VPy" firstAttribute="leading" secondItem="cex-bZ-e6e" secondAttribute="leading" id="HW6-rc-jJt"/>
                             <constraint firstItem="h0l-gy-BfV" firstAttribute="trailing" secondItem="cex-bZ-e6e" secondAttribute="trailing" id="QGE-wZ-Yfj"/>
-                            <constraint firstItem="h0l-gy-BfV" firstAttribute="top" secondItem="cex-bZ-e6e" secondAttribute="top" id="kpN-92-prn"/>
+                            <constraint firstItem="h0l-gy-BfV" firstAttribute="top" secondItem="lVm-QM-VPy" secondAttribute="bottom" id="Sib-j3-FdS"/>
+                            <constraint firstItem="lVm-QM-VPy" firstAttribute="top" secondItem="cex-bZ-e6e" secondAttribute="top" id="sGs-O1-Yuw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cex-bZ-e6e"/>
                     </view>
@@ -88,14 +100,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="ExpenditureTableView" destination="fgE-Ua-mqA" id="6RH-kt-h5R"/>
+                        <outlet property="expenditureTableView" destination="fgE-Ua-mqA" id="6RH-kt-h5R"/>
+                        <outlet property="totalExpenditureLabel" destination="h0l-gy-BfV" id="idk-BY-5La"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78J-Za-FhF" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="902.89855072463774" y="-1080.163043478261"/>
         </scene>
-        <!--新增支出-->
+        <!--Add Expenditure-->
         <scene sceneID="y4p-AL-BTa">
             <objects>
                 <viewController id="tso-0Y-sXK" customClass="AddExpenditureViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
@@ -121,7 +134,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tf5-2G-kk9"/>
                     </view>
-                    <navigationItem key="navigationItem" title="新增支出" id="yOf-hO-HCN">
+                    <navigationItem key="navigationItem" title="Add Expenditure" id="yOf-hO-HCN">
                         <barButtonItem key="rightBarButtonItem" title="done" id="gfn-kH-4tV">
                             <connections>
                                 <segue destination="Yd6-Mu-ugt" kind="unwind" unwindAction="unwindSegueBackWithSegue:" id="Hbz-pq-qWp"/>
@@ -155,16 +168,16 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oqG-qO-oGj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oqG-qO-oGj">
                                 <rect key="frame" x="0.0" y="172" width="414" height="515"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="IncomeCell" textLabel="Eoj-ZW-X5D" detailTextLabel="0g2-ob-U1n" style="IBUITableViewCellStyleValue1" id="OXY-tf-wFq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="incomeCell" textLabel="Eoj-ZW-X5D" detailTextLabel="0g2-ob-U1n" style="IBUITableViewCellStyleValue1" id="OXY-tf-wFq">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OXY-tf-wFq" id="UFF-FS-NXQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Eoj-ZW-X5D">
@@ -184,10 +197,14 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="XgL-fg-SOX" kind="show" identifier="editIncomeSegue" id="aHY-nn-S87"/>
+                                            <segue destination="gSb-6N-nPi" kind="show" identifier="editIncomeSegue" id="VbT-4o-ezb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="JRg-WB-FIQ" id="d7z-ui-aZt"/>
+                                    <outlet property="delegate" destination="JRg-WB-FIQ" id="XQc-Ji-iyA"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -199,47 +216,25 @@
                         <viewLayoutGuide key="safeArea" id="e0B-22-psq"/>
                     </view>
                     <navigationItem key="navigationItem" title="收入" id="D2z-LT-DcM">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="hgV-TG-Ls6"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="hgV-TG-Ls6">
+                            <connections>
+                                <action selector="dateButton:" destination="JRg-WB-FIQ" id="t85-zc-VM2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0cl-hM-J3T">
                             <connections>
-                                <segue destination="pgw-Iv-QqB" kind="show" identifier="AddIncomeSegue" id="kCE-lp-j0H"/>
+                                <segue destination="jst-Lu-lFm" kind="show" identifier="addIncomeSegue" id="gs4-Xy-gTD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="incomeTableView" destination="oqG-qO-oGj" id="XQu-3a-8Wo"/>
+                        <outlet property="totalIcomeLabel" destination="4si-c3-8ES" id="aCq-1j-G65"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAe-3L-qnG" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="902.89855072463774" y="27.717391304347828"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="GTu-Gn-4JA">
-            <objects>
-                <viewController id="XgL-fg-SOX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Rbw-SU-IcG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Cdd-R2-h6z"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ty5-0j-Oh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1658" y="453"/>
-        </scene>
-        <!--Add Income View Controller-->
-        <scene sceneID="ciS-sD-Ksx">
-            <objects>
-                <viewController id="pgw-Iv-QqB" customClass="AddIncomeViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PZa-9D-Rrq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="SMU-Qv-AD8"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sWW-Kg-ynV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1661" y="-227"/>
         </scene>
         <!--統計-->
         <scene sceneID="2FP-v3-xK6">
@@ -271,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLF-Lo-h6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749" y="1105"/>
+            <point key="canvasLocation" x="265" y="1154"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ceK-PZ-mJR">
@@ -349,7 +344,7 @@
             </objects>
             <point key="canvasLocation" x="-694" y="1154"/>
         </scene>
-        <!--編輯支出-->
+        <!--Edit Expenditure-->
         <scene sceneID="Yc6-Bo-J0P">
             <objects>
                 <viewController id="ShU-nj-4Zn" customClass="EditExpenditureViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
@@ -375,7 +370,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tmC-eV-D3r"/>
                     </view>
-                    <navigationItem key="navigationItem" title="編輯支出" id="jyI-dU-3C8">
+                    <navigationItem key="navigationItem" title="Edit Expenditure" id="jyI-dU-3C8">
                         <barButtonItem key="rightBarButtonItem" title="done" id="v8j-z4-izh">
                             <connections>
                                 <segue destination="3tt-8A-ORJ" kind="unwind" unwindAction="unwindSegueBackWithSegue:" id="rec-Gg-ttu"/>
@@ -390,6 +385,90 @@
                 <exit id="3tt-8A-ORJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1661" y="-901"/>
+        </scene>
+        <!--Add Income-->
+        <scene sceneID="U8s-Ee-y3I">
+            <objects>
+                <viewController id="jst-Lu-lFm" customClass="AddIncomeViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Aa-Q7-fAg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MONEY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fo6-Ce-SUp">
+                                <rect key="frame" x="0.0" y="64" width="414" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="e94-Bn-1o3"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fo6-Ce-SUp" firstAttribute="top" secondItem="w1I-1Z-dry" secondAttribute="top" id="an6-9n-OGm"/>
+                            <constraint firstItem="w1I-1Z-dry" firstAttribute="trailing" secondItem="fo6-Ce-SUp" secondAttribute="trailing" id="mSY-kr-qYH"/>
+                            <constraint firstItem="fo6-Ce-SUp" firstAttribute="leading" secondItem="w1I-1Z-dry" secondAttribute="leading" id="yVv-aN-Ouq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="w1I-1Z-dry"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Income" id="flG-yI-W5V">
+                        <barButtonItem key="rightBarButtonItem" title="done" id="THa-9s-QI0">
+                            <connections>
+                                <segue destination="1ie-F7-1nC" kind="unwind" unwindAction="unwindSegueBackWithSegue:" id="k7E-Fq-pOp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="moneyTextfield" destination="fo6-Ce-SUp" id="f54-kp-hxt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ovx-NB-mjl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="1ie-F7-1nC" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1661" y="-206"/>
+        </scene>
+        <!--Edit Income-->
+        <scene sceneID="EMw-vD-qbe">
+            <objects>
+                <viewController id="gSb-6N-nPi" customClass="EditIncomeViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o8K-fR-HHB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MONEY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5pI-DS-gmn">
+                                <rect key="frame" x="0.0" y="64" width="414" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="rz8-2n-QE3"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5pI-DS-gmn" firstAttribute="leading" secondItem="IDI-w2-yqu" secondAttribute="leading" id="IfN-1r-dIn"/>
+                            <constraint firstItem="5pI-DS-gmn" firstAttribute="top" secondItem="IDI-w2-yqu" secondAttribute="top" id="Yxa-FV-dKU"/>
+                            <constraint firstItem="IDI-w2-yqu" firstAttribute="trailing" secondItem="5pI-DS-gmn" secondAttribute="trailing" id="uWX-Vf-hV8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IDI-w2-yqu"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Income" id="Erq-yo-SlE">
+                        <barButtonItem key="rightBarButtonItem" title="done" id="H7v-0q-irT">
+                            <connections>
+                                <segue destination="EvQ-a5-G9T" kind="unwind" unwindAction="unwindSegueBackWithSegue:" id="1Hg-h2-pWt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="moneyTextfield" destination="5pI-DS-gmn" id="qlW-NO-eVe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10F-1D-MQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="EvQ-a5-G9T" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1661" y="451"/>
         </scene>
     </scenes>
     <resources>

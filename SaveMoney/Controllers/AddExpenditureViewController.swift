@@ -40,20 +40,24 @@ class AddExpenditureViewController: UIViewController {
             let typeDetail = typeDetail,
             let dateText = dateText{
             let newExpenditure = Expenditure(money: money, type: type, typeDetail: typeDetail, date: dateText)
-            print(money)
+            
             let expenditureVC = segue.destination as? ExpenditureViewController
             expenditureVC?.allExpenditureArray.append(newExpenditure)
-            print("現在新支出\(newExpenditure.date)\n\(newExpenditure.money)\(newExpenditure.type)\(newExpenditure.typeDetail)")
+            
             if let allExpenditureArray = expenditureVC?.allExpenditureArray{
                 expenditureVC?.currentDateExpenditureArray = [Expenditure]()
+                expenditureVC?.totalExpenditure = 0
                 for expenditure in allExpenditureArray{
                     if expenditure.date == dateText{
                         expenditureVC?.currentDateExpenditureArray.append(expenditure)
-                        print("\(expenditure.date)\(expenditure.money)\(expenditure.type)\(expenditure.typeDetail)")
+                        expenditureVC?.totalExpenditure += expenditure.money
                     }
                 }
+                if let totalExpenditure = expenditureVC?.totalExpenditure{
+                    expenditureVC?.totalExpenditureLabel.text = "\(totalExpenditure)"
+                }
             }
-            expenditureVC?.ExpenditureTableView.reloadData()
+            expenditureVC?.expenditureTableView.reloadData()
         }
         else{
             let noMoneyAlert = UIAlertController(title: "請輸入金額", message: nil, preferredStyle: .alert)
@@ -93,6 +97,7 @@ extension AddExpenditureViewController: IGLDropDownMenuDelegate{
         typeDropDownMenu.rotate = .random
         typeDropDownMenu.shouldFlipWhenToggleView = true
         typeDropDownMenu.reloadView()
+        
         self.view.addSubview(self.typeDropDownMenu)
     }
     
@@ -147,7 +152,6 @@ extension AddExpenditureViewController: IGLDropDownMenuDelegate{
                 typeDetail = typeDetailText
                 print(typeDetailText)
             }
-            
         }
         
     }

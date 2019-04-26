@@ -23,7 +23,6 @@ class EditExpenditureViewController: UIViewController {
                                              "行" : ["交通費", "其他"],
                                              "育" : ["教育", "其他"],
                                              "樂" : ["旅遊", "看電影", "其他"]]
-    var money: Int?
     var type: String?
     var typeDetail: String?
     var dateText: String?
@@ -41,18 +40,23 @@ class EditExpenditureViewController: UIViewController {
             let typeText = type,
             let typeDetailText = typeDetail,
             let dateText = dateText{
-            print(inputMoney)
-            print(typeText)
-            print(typeDetailText)
-            print(dateText)
+            
             let expenditureVC = segue.destination as? ExpenditureViewController
             if let indexPath = index{
                 expenditureVC?.currentDateExpenditureArray[indexPath.row].money = inputMoney
                 expenditureVC?.currentDateExpenditureArray[indexPath.row].type = typeText
                 expenditureVC?.currentDateExpenditureArray[indexPath.row].typeDetail = typeDetailText
                 expenditureVC?.currentDateExpenditureArray[indexPath.row].date = dateText
-                expenditureVC?.ExpenditureTableView.reloadData()
-                print(inputMoney)
+                expenditureVC?.expenditureTableView.reloadData()
+            }
+            if let currentDateExpenditureArray = expenditureVC?.currentDateExpenditureArray{
+                expenditureVC?.totalExpenditure = 0
+                for Expenditure in currentDateExpenditureArray{
+                    expenditureVC?.totalExpenditure += Expenditure.money
+                }
+                if let totalExpenditure = expenditureVC?.totalExpenditure{
+                    expenditureVC?.totalExpenditureLabel.text = "\(totalExpenditure)"
+                }
             }
             
         }
