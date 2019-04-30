@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		12C3F11B6D95083E8DFF827B /* Pods_SaveMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533888948059A73077F8B8C7 /* Pods_SaveMoney.framework */; };
+		441D01F62277E66000D998E5 /* ChartExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D01F52277E66000D998E5 /* ChartExpenditureViewController.swift */; };
+		441D01F82277E67800D998E5 /* ChartIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D01F72277E67800D998E5 /* ChartIncomeViewController.swift */; };
 		443C4A37226F634000E825D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A36226F634000E825D3 /* AppDelegate.swift */; };
 		443C4A39226F634000E825D3 /* ExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A38226F634000E825D3 /* ExpenditureViewController.swift */; };
 		443C4A3C226F634000E825D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443C4A3A226F634000E825D3 /* Main.storyboard */; };
@@ -25,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		00F0143109C199A26CD3033F /* Pods-SaveMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveMoney.release.xcconfig"; path = "Target Support Files/Pods-SaveMoney/Pods-SaveMoney.release.xcconfig"; sourceTree = "<group>"; };
+		441D01F52277E66000D998E5 /* ChartExpenditureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartExpenditureViewController.swift; sourceTree = "<group>"; };
+		441D01F72277E67800D998E5 /* ChartIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIncomeViewController.swift; sourceTree = "<group>"; };
 		443C4A33226F634000E825D3 /* SaveMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C4A36226F634000E825D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		443C4A38226F634000E825D3 /* ExpenditureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureViewController.swift; sourceTree = "<group>"; };
@@ -102,9 +106,11 @@
 				443C4A38226F634000E825D3 /* ExpenditureViewController.swift */,
 				443C4A4F226F644500E825D3 /* AddExpenditureViewController.swift */,
 				443C4A5922700A2F00E825D3 /* EditExpenditureViewController.swift */,
+				441D01F52277E66000D998E5 /* ChartExpenditureViewController.swift */,
 				443C4A51226F645700E825D3 /* IncomeViewController.swift */,
 				443C4A53226F646700E825D3 /* AddIncomeViewController.swift */,
 				447D67E42272B04600DBCBB9 /* EditIncomeViewController.swift */,
+				441D01F72277E67800D998E5 /* ChartIncomeViewController.swift */,
 				443C4A55226F648400E825D3 /* StatisticsViewController.swift */,
 			);
 			path = Controllers;
@@ -222,13 +228,17 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SaveMoney/Pods-SaveMoney-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/IGLDropDownMenu/IGLDropDownMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGLDropDownMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -266,6 +276,7 @@
 			files = (
 				443C4A39226F634000E825D3 /* ExpenditureViewController.swift in Sources */,
 				443C4A50226F644500E825D3 /* AddExpenditureViewController.swift in Sources */,
+				441D01F82277E67800D998E5 /* ChartIncomeViewController.swift in Sources */,
 				443C4A5A22700A2F00E825D3 /* EditExpenditureViewController.swift in Sources */,
 				443C4A54226F646700E825D3 /* AddIncomeViewController.swift in Sources */,
 				447D67E32272B01A00DBCBB9 /* Income.swift in Sources */,
@@ -273,6 +284,7 @@
 				443C4A58226F649100E825D3 /* Expenditure.swift in Sources */,
 				447D67E52272B04600DBCBB9 /* EditIncomeViewController.swift in Sources */,
 				443C4A37226F634000E825D3 /* AppDelegate.swift in Sources */,
+				441D01F62277E66000D998E5 /* ChartExpenditureViewController.swift in Sources */,
 				443C4A52226F645700E825D3 /* IncomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

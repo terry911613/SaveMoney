@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class ExpenditureViewController: UIViewController{
     
@@ -19,13 +20,33 @@ class ExpenditureViewController: UIViewController{
     let dateFormatter = DateFormatter()
     var currentSelectDate = Date()
     var currentSelectDateText: String?
-    var totalExpenditure = 0
+    var totalExpenditureDic = [String : [Int]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getDate()
-        totalExpenditureLabel.text = "\(totalExpenditure)"
+        totalExpenditureLabel.text = ""
+        
+        //  取今天所有的支出總和
+        currentSelectDateText = dateFormatter.string(from: datePicker.date)
+        if let today = currentSelectDateText{
+            if let todayMoneyArray = totalExpenditureDic[today]{
+                var todayMoney = 0
+                for money in todayMoneyArray{
+                    todayMoney += money
+                    totalExpenditureLabel.text = "\(todayMoney)"
+                }
+            }
+        }
+        
+    }
+    
+    //  tableview顯示特效
+    func animateTableView(){
+        let animations = [AnimationType.from(direction: .left, offset: 10.0)]
+        expenditureTableView.reloadData()
+        UIView.animate(views: expenditureTableView.visibleCells, animations: animations, reversed: false, initialAlpha: 0.0, finalAlpha: 1.0, delay: 0, animationInterval: 0.05, duration: ViewAnimatorConfig.duration, completion: nil)
     }
     
     func getDate(){
@@ -52,17 +73,34 @@ class ExpenditureViewController: UIViewController{
         let okAction = UIAlertAction(title: "確定", style: .default) { (alert: UIAlertAction) in
             self.currentDateExpenditureArray = [Expenditure]()
             // 按下確定，讓標題改成選取到的日期
-            self.currentSelectDateText = self.dateFormatter.string(from: self.datePicker.date)
-            self.navigationItem.title = self.currentSelectDateText
-            self.currentSelectDate = self.datePicker.date
-            
-            for expenditure in self.allExpenditureArray{
-                if self.currentSelectDateText == expenditure.date{
-                    self.currentDateExpenditureArray.append(expenditure)
-                    
+            if var currentSelectDateText = self.currentSelectDateText{
+                currentSelectDateText = self.dateFormatter.string(from: self.datePicker.date)
+                self.navigationItem.title = currentSelectDateText
+                self.currentSelectDate = self.datePicker.date
+                
+                //  取選取日期的支出資料
+                for expenditure in self.allExpenditureArray{
+                    if currentSelectDateText == expenditure.date{
+                        self.currentDateExpenditureArray.append(expenditure)
+                    }
                 }
+                //  取選取日期的支出總和
+                for (key, value) in self.totalExpenditureDic{
+                    if currentSelectDateText == key{
+                        var todayMoney = 0
+                        for money in value{
+                            todayMoney += money
+                            self.totalExpenditureLabel.text = "\(todayMoney)"
+                        }
+                        break
+                    }
+                    else{
+                        self.totalExpenditureLabel.text = ""
+                    }
+                }
+                self.expenditureTableView.reloadData()
+                self.animateTableView()
             }
-            self.expenditureTableView.reloadData()
         }
         dateAlert.addAction(okAction)
         //  警告控制器裡的取消按鈕
@@ -77,6 +115,7 @@ class ExpenditureViewController: UIViewController{
         if segue.identifier == "editExpenditureSegue"{
             if let indexPath = expenditureTableView.indexPathForSelectedRow{
                 let editExpenditureVC = segue.destination as? EditExpenditureViewController
+                editExpenditureVC?.money = currentDateExpenditureArray[indexPath.row].money
                 editExpenditureVC?.type = currentDateExpenditureArray[indexPath.row].type
                 editExpenditureVC?.typeDetail = currentDateExpenditureArray[indexPath.row].typeDetail
                 editExpenditureVC?.dateText = currentDateExpenditureArray[indexPath.row].date
@@ -92,9 +131,11 @@ class ExpenditureViewController: UIViewController{
         }
         else if segue.identifier == "addExpenditureSegue"{
             let AddExpenditureVC = segue.destination as? AddExpenditureViewController
-            currentSelectDateText = dateFormatter.string(from: currentSelectDate)
-            AddExpenditureVC?.dateText = currentSelectDateText
-            AddExpenditureVC?.setupTypeInit()
+            if var currentSelectDateText = currentSelectDateText{
+                currentSelectDateText = dateFormatter.string(from: currentSelectDate)
+                AddExpenditureVC?.dateText = currentSelectDateText
+                AddExpenditureVC?.setupTypeInit()
+            }
         }
         
     }
@@ -119,9 +160,8 @@ extension ExpenditureViewController: UITableViewDataSource, UITableViewDelegate{
         let expenditure = currentDateExpenditureArray[indexPath.row]
         cell.imageView?.image = UIImage(named: "\(expenditure.type)")
         cell.textLabel?.text = "\t類型：\(expenditure.type)"
-        if let typeDeatil = expenditure.typeDetail{
-            cell.detailTextLabel?.text = "\(typeDeatil) $\(expenditure.money)"
-        }
+        cell.detailTextLabel?.text = "\(expenditure.typeDetail) $\(expenditure.money)"
+        
         return cell
     }
     
@@ -133,8 +173,8 @@ extension ExpenditureViewController: UITableViewDataSource, UITableViewDelegate{
     
     //  在 tableView 上往左滑可以刪除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete{
-            
             currentDateExpenditureArray.remove(at: indexPath.row)
             expenditureTableView.reloadData()
         }

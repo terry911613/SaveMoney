@@ -23,6 +23,7 @@ class EditExpenditureViewController: UIViewController {
                                              "行" : ["交通費", "其他"],
                                              "育" : ["教育", "其他"],
                                              "樂" : ["旅遊", "看電影", "其他"]]
+    var money: Int?
     var type: String?
     var typeDetail: String?
     var dateText: String?
@@ -48,17 +49,29 @@ class EditExpenditureViewController: UIViewController {
                 expenditureVC?.currentDateExpenditureArray[indexPath.row].typeDetail = typeDetailText
                 expenditureVC?.currentDateExpenditureArray[indexPath.row].date = dateText
                 expenditureVC?.expenditureTableView.reloadData()
-            }
-            if let currentDateExpenditureArray = expenditureVC?.currentDateExpenditureArray{
-                expenditureVC?.totalExpenditure = 0
-                for Expenditure in currentDateExpenditureArray{
-                    expenditureVC?.totalExpenditure += Expenditure.money
-                }
-                if let totalExpenditure = expenditureVC?.totalExpenditure{
-                    expenditureVC?.totalExpenditureLabel.text = "\(totalExpenditure)"
-                }
+                expenditureVC?.animateTableView()
             }
             
+            //  假如編輯過後的錢跟編輯前的錢不一樣才會改掉裡面的值
+            if money != inputMoney{
+                if var total = expenditureVC?.totalExpenditureDic[dateText]{
+                    for i in 0...total.count-1{
+                        if let money = money {
+                            if total[i] == money{
+                                total.remove(at: i)
+                                total.append(inputMoney)
+                                break
+                            }
+                        }
+                    }
+                    var todayMoney = 0
+                    for x in total{
+                        todayMoney += x
+                    }
+                    expenditureVC?.totalExpenditureLabel.text = "\(todayMoney)"
+                    expenditureVC?.totalExpenditureDic[dateText] = total
+                }
+            }
         }
         
     }

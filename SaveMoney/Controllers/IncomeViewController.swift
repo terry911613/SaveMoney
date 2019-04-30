@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class IncomeViewController: UIViewController {
 
@@ -19,11 +20,32 @@ class IncomeViewController: UIViewController {
     let dateFormatter = DateFormatter()
     var currentSelectDate = Date()
     var currentSelectDateText: String?
+    var totalIncomeDic = [String : [Int]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         getDate()
+        totalIcomeLabel.text = ""
+        
+        //  取今天所有的支出總和
+        currentSelectDateText = dateFormatter.string(from: datePicker.date)
+        if let today = currentSelectDateText{
+            if let todayMoneyArray = totalIncomeDic[today]{
+                var todayMoney = 0
+                for money in todayMoneyArray{
+                    todayMoney += money
+                    totalIcomeLabel.text = "\(todayMoney)"
+                }
+            }
+        }
+    }
+    
+    //  tableview顯示特效
+    func animateTableView(){
+        let animations = [AnimationType.from(direction: .left, offset: 10.0)]
+        incomeTableView.reloadData()
+        UIView.animate(views: incomeTableView.visibleCells, animations: animations, reversed: false, initialAlpha: 0.0, finalAlpha: 1.0, delay: 0, animationInterval: 0.05, duration: ViewAnimatorConfig.duration, completion: nil)
     }
     
     func getDate(){
@@ -47,16 +69,34 @@ class IncomeViewController: UIViewController {
         let okAction = UIAlertAction(title: "確定", style: .default) { (alert: UIAlertAction) in
             self.currentDateIncomeArray = [Income]()
             // 按下確定，讓標題改成選取到的日期
-            self.currentSelectDateText = self.dateFormatter.string(from: self.datePicker.date)
-            self.navigationItem.title = self.currentSelectDateText
-            self.currentSelectDate = self.datePicker.date
-            
-            for income in self.allIncomeArray{
-                if self.currentSelectDateText == income.date{
-                    self.currentDateIncomeArray.append(income)
+            if var currentSelectDateText = self.currentSelectDateText{
+                currentSelectDateText = self.dateFormatter.string(from: self.datePicker.date)
+                self.navigationItem.title = currentSelectDateText
+                self.currentSelectDate = self.datePicker.date
+                //  取選取日期的收入資料
+                for income in self.allIncomeArray{
+                    if currentSelectDateText == income.date{
+                        self.currentDateIncomeArray.append(income)
+                    }
                 }
+                
+                //  取選取日期的收入總和
+                for (key, value) in self.totalIncomeDic{
+                    if currentSelectDateText == key{
+                        var todayMoney = 0
+                        for money in value{
+                            todayMoney += money
+                            self.totalIcomeLabel.text = "\(todayMoney)"
+                        }
+                        break
+                    }
+                    else{
+                        self.totalIcomeLabel.text = ""
+                    }
+                }
+                self.incomeTableView.reloadData()
+                self.animateTableView()
             }
-            self.incomeTableView.reloadData()
         }
         dateAlert.addAction(okAction)
         //  警告控制器裡的取消按鈕
@@ -71,6 +111,7 @@ class IncomeViewController: UIViewController {
         if segue.identifier == "editIncomeSegue"{
             if let indexPath = incomeTableView.indexPathForSelectedRow{
                 let editIncomeVC = segue.destination as? EditIncomeViewController
+                editIncomeVC?.money = currentDateIncomeArray[indexPath.row].money
                 editIncomeVC?.type = currentDateIncomeArray[indexPath.row].type
                 editIncomeVC?.dateText = currentDateIncomeArray[indexPath.row].date
                 editIncomeVC?.index = indexPath
@@ -83,10 +124,11 @@ class IncomeViewController: UIViewController {
         }
         else if segue.identifier == "addIncomeSegue"{
             let AddIncomeVC = segue.destination as? AddIncomeViewController
-            currentSelectDateText = dateFormatter.string(from: currentSelectDate)
-            AddIncomeVC?.dateText = currentSelectDateText
-            AddIncomeVC?.setupAddType()
-            print("ok")
+            if var currentSelectDateText = currentSelectDateText{
+                currentSelectDateText = dateFormatter.string(from: currentSelectDate)
+                AddIncomeVC?.dateText = currentSelectDateText
+                AddIncomeVC?.setupAddType()
+            }
         }
         
     }

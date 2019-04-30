@@ -8,6 +8,7 @@
 
 import UIKit
 import IGLDropDownMenu
+import ViewAnimator
 
 class AddExpenditureViewController: UIViewController {
     
@@ -22,7 +23,6 @@ class AddExpenditureViewController: UIViewController {
                                              "行" : ["交通費", "其他"],
                                              "育" : ["教育", "其他"],
                                              "樂" : ["旅遊", "看電影", "其他"]]
-//    var money: String?
     var type: String?
     var typeDetail: String?
     var dateText: String?
@@ -44,20 +44,43 @@ class AddExpenditureViewController: UIViewController {
             let expenditureVC = segue.destination as? ExpenditureViewController
             expenditureVC?.allExpenditureArray.append(newExpenditure)
             
+            // 算今日支出總和
+            if let totalExpenditureDic = expenditureVC?.totalExpenditureDic{
+                if totalExpenditureDic.isEmpty{
+                    expenditureVC?.totalExpenditureDic[dateText] = [money]
+                }
+                else{
+                    for (key, _) in totalExpenditureDic{
+                        if key == dateText{
+                            expenditureVC?.totalExpenditureDic[dateText]?.append(money)
+                            break
+                        }
+                        else{
+                            expenditureVC?.totalExpenditureDic[dateText] = [money]
+                            break
+                        }
+                    }
+                }
+            }
+            if let total = expenditureVC?.totalExpenditureDic[dateText]{
+                var todayMoney = 0
+                for i in total{
+                    todayMoney += i
+                }
+                expenditureVC?.totalExpenditureLabel.text = "\(todayMoney)"
+            }
+            
+            // 找出所有支出裡今天日期的支出資料
             if let allExpenditureArray = expenditureVC?.allExpenditureArray{
                 expenditureVC?.currentDateExpenditureArray = [Expenditure]()
-                expenditureVC?.totalExpenditure = 0
                 for expenditure in allExpenditureArray{
                     if expenditure.date == dateText{
                         expenditureVC?.currentDateExpenditureArray.append(expenditure)
-                        expenditureVC?.totalExpenditure += expenditure.money
                     }
-                }
-                if let totalExpenditure = expenditureVC?.totalExpenditure{
-                    expenditureVC?.totalExpenditureLabel.text = "\(totalExpenditure)"
                 }
             }
             expenditureVC?.expenditureTableView.reloadData()
+            expenditureVC?.animateTableView()
         }
         else{
             let noMoneyAlert = UIAlertController(title: "請輸入金額", message: nil, preferredStyle: .alert)

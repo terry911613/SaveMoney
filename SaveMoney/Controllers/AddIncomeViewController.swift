@@ -24,8 +24,6 @@ class AddIncomeViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        print("1")
-        
         if let money = Int(moneyTextfield.text!),
             let type = type,
             let dateText = dateText{
@@ -34,6 +32,33 @@ class AddIncomeViewController: UIViewController {
             let incomeVC = segue.destination as? IncomeViewController
             incomeVC?.allIncomeArray.append(newIncome)
             
+            // 算今日收入總和
+            if let totalExpenditureDic = incomeVC?.totalIncomeDic{
+                if totalExpenditureDic.isEmpty{
+                    incomeVC?.totalIncomeDic[dateText] = [money]
+                }
+                else{
+                    for (key, _) in totalExpenditureDic{
+                        if key == dateText{
+                            incomeVC?.totalIncomeDic[dateText]?.append(money)
+                            break
+                        }
+                        else{
+                            incomeVC?.totalIncomeDic[dateText] = [money]
+                            break
+                        }
+                    }
+                }
+            }
+            if let total = incomeVC?.totalIncomeDic[dateText]{
+                var todayMoney = 0
+                for i in total{
+                    todayMoney += i
+                }
+                incomeVC?.totalIcomeLabel.text = "\(todayMoney)"
+            }
+            
+            // 找出所有收入裡今天日期的收入資料
             if let allIncomeArray = incomeVC?.allIncomeArray{
                 incomeVC?.currentDateIncomeArray = [Income]()
                 for income in allIncomeArray{
@@ -43,6 +68,7 @@ class AddIncomeViewController: UIViewController {
                 }
             }
             incomeVC?.incomeTableView.reloadData()
+            incomeVC?.animateTableView()
         }
         else{
             let noMoneyAlert = UIAlertController(title: "請輸入金額", message: nil, preferredStyle: .alert)
@@ -50,7 +76,6 @@ class AddIncomeViewController: UIViewController {
             noMoneyAlert.addAction(okAction)
             self.present(noMoneyAlert, animated: true, completion: nil)
         }
-        print("2")
     }
     
     //隨便按一個地方，彈出鍵盤就會收回

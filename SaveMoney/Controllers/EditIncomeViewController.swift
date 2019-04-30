@@ -15,6 +15,7 @@ class EditIncomeViewController: UIViewController {
     
     var editIncomeArray = [Income]()
     var typeDropDownMenu = IGLDropDownMenu()
+    var money: Int?
     var typeArray: NSArray = ["薪水", "獎金", "補助", "投資", "其他"]
     var type: String?
     var dateText: String?
@@ -37,6 +38,28 @@ class EditIncomeViewController: UIViewController {
                 IncomeVC?.currentDateIncomeArray[indexPath.row].type = typeText
                 IncomeVC?.currentDateIncomeArray[indexPath.row].date = dateText
                 IncomeVC?.incomeTableView.reloadData()
+                IncomeVC?.animateTableView()
+            }
+            
+            //  假如編輯過後的錢跟編輯前的錢不一樣才會改掉裡面的值
+            if money != inputMoney{
+                if var total = IncomeVC?.totalIncomeDic[dateText]{
+                    for i in 0...total.count-1{
+                        if let money = money {
+                            if total[i] == money{
+                                total.remove(at: i)
+                                total.append(inputMoney)
+                                break
+                            }
+                        }
+                    }
+                    var todayMoney = 0
+                    for x in total{
+                        todayMoney += x
+                    }
+                    IncomeVC?.totalIcomeLabel.text = "\(todayMoney)"
+                    IncomeVC?.totalIncomeDic[dateText] = total
+                }
             }
             
         }

@@ -11,8 +11,8 @@ import Foundation
 class Expenditure {
     var money: Int
     var type: String
-    var typeDetail: String?
-    var date: String?
+    var typeDetail: String
+    var date: String
 
     init(money: Int, type: String, typeDetail: String, date: String) {
         self.money = money
