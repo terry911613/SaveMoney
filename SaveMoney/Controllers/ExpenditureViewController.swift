@@ -20,21 +20,34 @@ class ExpenditureViewController: UIViewController{
     let dateFormatter = DateFormatter()
     var currentSelectDate = Date()
     var currentSelectDateText: String?
+    let formatter = NumberFormatter()
+    
     var totalExpenditureDic = [String : [Int]]()
+    var foodDic = [String : [Int]]()
+    var clothingDic = [String : [Int]]()
+    var housingDic = [String : [Int]]()
+    var transportationDic = [String : [Int]]()
+    var educationDic = [String : [Int]]()
+    var entertainmentDic = [String : [Int]]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getDate()
         totalExpenditureLabel.text = ""
+        formatter.numberStyle = .currency
         
         //  取今天所有的支出總和
         currentSelectDateText = dateFormatter.string(from: datePicker.date)
+        
         if let today = currentSelectDateText{
             if let todayMoneyArray = totalExpenditureDic[today]{
                 var todayMoney = 0
                 for money in todayMoneyArray{
                     todayMoney += money
+                }
+                if let todayMoney = formatter.string(from: NSNumber(value: todayMoney)){
                     totalExpenditureLabel.text = "\(todayMoney)"
                 }
             }
@@ -90,6 +103,8 @@ class ExpenditureViewController: UIViewController{
                         var todayMoney = 0
                         for money in value{
                             todayMoney += money
+                        }
+                        if let todayMoney = self.formatter.string(from: (NSNumber(value: todayMoney))){
                             self.totalExpenditureLabel.text = "\(todayMoney)"
                         }
                         break
@@ -130,12 +145,26 @@ class ExpenditureViewController: UIViewController{
             }
         }
         else if segue.identifier == "addExpenditureSegue"{
-            let AddExpenditureVC = segue.destination as? AddExpenditureViewController
+            let addExpenditureVC = segue.destination as? AddExpenditureViewController
             if var currentSelectDateText = currentSelectDateText{
                 currentSelectDateText = dateFormatter.string(from: currentSelectDate)
-                AddExpenditureVC?.dateText = currentSelectDateText
-                AddExpenditureVC?.setupTypeInit()
+                addExpenditureVC?.dateText = currentSelectDateText
+                addExpenditureVC?.setupTypeInit()
             }
+        }
+        else if segue.identifier == "chartExpenditureSegue"{
+            let chartExpenditureVC = segue.destination as? ChartExpenditureViewController
+            
+            chartExpenditureVC?.dateText = currentSelectDateText
+            chartExpenditureVC?.totalExpenditureDic = totalExpenditureDic
+            chartExpenditureVC?.foodDic = foodDic
+            chartExpenditureVC?.clothingDic = clothingDic
+            chartExpenditureVC?.housingDic = housingDic
+            chartExpenditureVC?.transportationDic = transportationDic
+            chartExpenditureVC?.educationDic = educationDic
+            chartExpenditureVC?.entertainmentDic = entertainmentDic
+            
+//            chartExpenditureVC?.pieChartUpdate()
         }
         
     }
@@ -160,7 +189,10 @@ extension ExpenditureViewController: UITableViewDataSource, UITableViewDelegate{
         let expenditure = currentDateExpenditureArray[indexPath.row]
         cell.imageView?.image = UIImage(named: "\(expenditure.type)")
         cell.textLabel?.text = "\t類型：\(expenditure.type)"
-        cell.detailTextLabel?.text = "\(expenditure.typeDetail) $\(expenditure.money)"
+        if let expenditureMoney = formatter.string(from: NSNumber(value: expenditure.money)){
+            cell.detailTextLabel?.text = "\(expenditure.typeDetail) " + expenditureMoney
+        }
+        
         
         return cell
     }

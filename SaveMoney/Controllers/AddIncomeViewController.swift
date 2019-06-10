@@ -22,6 +22,7 @@ class AddIncomeViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let money = Int(moneyTextfield.text!),
@@ -32,7 +33,7 @@ class AddIncomeViewController: UIViewController {
             let incomeVC = segue.destination as? IncomeViewController
             incomeVC?.allIncomeArray.append(newIncome)
             
-            // 算今日收入總和
+            // 把新收入資料日期金額加進字典裡
             if let totalExpenditureDic = incomeVC?.totalIncomeDic{
                 if totalExpenditureDic.isEmpty{
                     incomeVC?.totalIncomeDic[dateText] = [money]
@@ -50,12 +51,15 @@ class AddIncomeViewController: UIViewController {
                     }
                 }
             }
+            // 算今日收入總和
             if let total = incomeVC?.totalIncomeDic[dateText]{
                 var todayMoney = 0
                 for i in total{
                     todayMoney += i
                 }
-                incomeVC?.totalIcomeLabel.text = "\(todayMoney)"
+                if let todayMoney = incomeVC?.formatter.string(from: NSNumber(value: todayMoney)){
+                    incomeVC?.totalIcomeLabel.text = "\(todayMoney)"
+                }
             }
             
             // 找出所有收入裡今天日期的收入資料

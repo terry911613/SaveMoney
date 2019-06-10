@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		12C3F11B6D95083E8DFF827B /* Pods_SaveMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533888948059A73077F8B8C7 /* Pods_SaveMoney.framework */; };
+		4402594122AE535800C26CBB /* testttttttt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4402594022AE535800C26CBB /* testttttttt.swift */; };
 		441D01F62277E66000D998E5 /* ChartExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D01F52277E66000D998E5 /* ChartExpenditureViewController.swift */; };
 		441D01F82277E67800D998E5 /* ChartIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D01F72277E67800D998E5 /* ChartIncomeViewController.swift */; };
+		441D01FC227854F600D998E5 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D01FB227854F600D998E5 /* Type.swift */; };
 		443C4A37226F634000E825D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A36226F634000E825D3 /* AppDelegate.swift */; };
 		443C4A39226F634000E825D3 /* ExpenditureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A38226F634000E825D3 /* ExpenditureViewController.swift */; };
 		443C4A3C226F634000E825D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443C4A3A226F634000E825D3 /* Main.storyboard */; };
@@ -27,8 +29,10 @@
 
 /* Begin PBXFileReference section */
 		00F0143109C199A26CD3033F /* Pods-SaveMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveMoney.release.xcconfig"; path = "Target Support Files/Pods-SaveMoney/Pods-SaveMoney.release.xcconfig"; sourceTree = "<group>"; };
+		4402594022AE535800C26CBB /* testttttttt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testttttttt.swift; sourceTree = "<group>"; };
 		441D01F52277E66000D998E5 /* ChartExpenditureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartExpenditureViewController.swift; sourceTree = "<group>"; };
 		441D01F72277E67800D998E5 /* ChartIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIncomeViewController.swift; sourceTree = "<group>"; };
+		441D01FB227854F600D998E5 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		443C4A33226F634000E825D3 /* SaveMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C4A36226F634000E825D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		443C4A38226F634000E825D3 /* ExpenditureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			children = (
 				443C4A57226F649100E825D3 /* Expenditure.swift */,
 				447D67E22272B01A00DBCBB9 /* Income.swift */,
+				441D01FB227854F600D998E5 /* Type.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 				447D67E42272B04600DBCBB9 /* EditIncomeViewController.swift */,
 				441D01F72277E67800D998E5 /* ChartIncomeViewController.swift */,
 				443C4A55226F648400E825D3 /* StatisticsViewController.swift */,
+				4402594022AE535800C26CBB /* testttttttt.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 				443C4A54226F646700E825D3 /* AddIncomeViewController.swift in Sources */,
 				447D67E32272B01A00DBCBB9 /* Income.swift in Sources */,
 				443C4A56226F648400E825D3 /* StatisticsViewController.swift in Sources */,
+				441D01FC227854F600D998E5 /* Type.swift in Sources */,
+				4402594122AE535800C26CBB /* testttttttt.swift in Sources */,
 				443C4A58226F649100E825D3 /* Expenditure.swift in Sources */,
 				447D67E52272B04600DBCBB9 /* EditIncomeViewController.swift in Sources */,
 				443C4A37226F634000E825D3 /* AppDelegate.swift in Sources */,

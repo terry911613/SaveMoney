@@ -53,29 +53,32 @@ class EditExpenditureViewController: UIViewController {
             }
             
             //  假如編輯過後的錢跟編輯前的錢不一樣才會改掉裡面的值
-            if money != inputMoney{
-                if var total = expenditureVC?.totalExpenditureDic[dateText]{
-                    for i in 0...total.count-1{
-                        if let money = money {
+            if let money = money{
+                if money != inputMoney{
+                    if var total = expenditureVC?.totalExpenditureDic[dateText]{
+                        for i in 0...total.count-1{
                             if total[i] == money{
                                 total.remove(at: i)
                                 total.append(inputMoney)
                                 break
                             }
+                            
                         }
+                        var todayMoney = 0
+                        for x in total{
+                            todayMoney += x
+                        }
+                        if let todayMoney = expenditureVC?.formatter.string(from: NSNumber(value: todayMoney)){
+                            expenditureVC?.totalExpenditureLabel.text = "\(todayMoney)"
+                        }
+                        expenditureVC?.totalExpenditureDic[dateText] = total
+                        
                     }
-                    var todayMoney = 0
-                    for x in total{
-                        todayMoney += x
-                    }
-                    expenditureVC?.totalExpenditureLabel.text = "\(todayMoney)"
-                    expenditureVC?.totalExpenditureDic[dateText] = total
                 }
             }
         }
-        
     }
-        
+    
     //  隨便按一個地方，彈出鍵盤就會收回
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

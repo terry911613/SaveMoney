@@ -82,7 +82,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="expenditure chart"/>
                                 <connections>
-                                    <segue destination="ygj-uq-DAd" kind="show" id="04b-h5-HNN"/>
+                                    <segue destination="ygj-uq-DAd" kind="show" identifier="chartExpenditureSegue" id="04b-h5-HNN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -241,7 +241,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="income chart"/>
                                 <connections>
-                                    <segue destination="i04-xw-FwR" kind="show" id="vKB-NR-WWD"/>
+                                    <segue destination="i04-xw-FwR" kind="show" identifier="chartIncomeSegue" id="vKB-NR-WWD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -577,8 +577,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOy-Rv-SCL">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOy-Rv-SCL" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="264" width="414" height="423"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywt-Vo-WFC">
+                                        <rect key="frame" x="360" y="385" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="a:" destination="ygj-uq-DAd" eventType="touchUpInside" id="8pp-le-AwR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BbF-IA-SAZ">
@@ -620,6 +630,9 @@
                         <viewLayoutGuide key="safeArea" id="Ft1-0i-wbV"/>
                     </view>
                     <navigationItem key="navigationItem" title="Expenditure" id="vsl-1C-LGw"/>
+                    <connections>
+                        <outlet property="chartExpenditureView" destination="rOy-Rv-SCL" id="Tpb-pm-ey4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvy-UL-KUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -642,7 +655,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45B-Mh-bxD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45B-Mh-bxD" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="264" width="414" height="423"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -685,6 +698,9 @@
                         <viewLayoutGuide key="safeArea" id="JVI-Ac-JiS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Income" id="XXz-1H-Ade"/>
+                    <connections>
+                        <outlet property="chartIncomeView" destination="45B-Mh-bxD" id="gUr-NK-Iyw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Kk-c0-sRm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

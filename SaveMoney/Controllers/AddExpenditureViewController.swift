@@ -35,19 +35,24 @@ class AddExpenditureViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        let expenditureVC = segue.destination as? ExpenditureViewController
+        
         if let money = Int(moneyTextfield.text!),
             let type = type,
             let typeDetail = typeDetail,
             let dateText = dateText{
+            //  建立新支出
             let newExpenditure = Expenditure(money: money, type: type, typeDetail: typeDetail, date: dateText)
             
-            let expenditureVC = segue.destination as? ExpenditureViewController
+//            let expenditureVC = segue.destination as? ExpenditureViewController
+            //  把新支出加入陣列中
             expenditureVC?.allExpenditureArray.append(newExpenditure)
             
-            // 算今日支出總和
+            // 把新支出資料日期金額加進字典裡
             if let totalExpenditureDic = expenditureVC?.totalExpenditureDic{
                 if totalExpenditureDic.isEmpty{
                     expenditureVC?.totalExpenditureDic[dateText] = [money]
+                    print(expenditureVC?.totalExpenditureDic)
                 }
                 else{
                     for (key, _) in totalExpenditureDic{
@@ -62,12 +67,15 @@ class AddExpenditureViewController: UIViewController {
                     }
                 }
             }
+            // 算今日支出總和
             if let total = expenditureVC?.totalExpenditureDic[dateText]{
                 var todayMoney = 0
                 for i in total{
                     todayMoney += i
                 }
-                expenditureVC?.totalExpenditureLabel.text = "\(todayMoney)"
+                if let todayMoney = expenditureVC?.formatter.string(from: NSNumber(value: todayMoney)){
+                    expenditureVC?.totalExpenditureLabel.text = "\(todayMoney)"
+                }
             }
             
             // 找出所有支出裡今天日期的支出資料
@@ -87,6 +95,156 @@ class AddExpenditureViewController: UIViewController {
             let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
             noMoneyAlert.addAction(okAction)
             self.present(noMoneyAlert, animated: true, completion: nil)
+        }
+        //  把類型細項加近各自的字典裡
+        if let type = type{
+            print(type)
+            print(Type.food.description)
+            // 食
+            if type == Type.food.description{
+//                addDetailInDic(dic: expenditureVC?.foodDic)
+                if let money = Int(moneyTextfield.text!),
+                    let dateText = dateText{
+                    if let dic = expenditureVC?.foodDic{
+                        if dic.isEmpty{
+                            expenditureVC?.foodDic[dateText] = [money]
+                        }
+                        else{
+                            for (key, _) in dic{
+                                if key == dateText{
+                                    expenditureVC?.foodDic[dateText]?.append(money)
+                                    break
+                                }
+                                else{
+                                    expenditureVC?.foodDic[dateText] = [money]
+                                    break
+                                }
+                            }
+                        }
+                        print("食 \(expenditureVC?.foodDic)")
+                    }
+                }
+            }
+            // 衣
+            else if type == Type.clothing.description{
+                if let money = Int(moneyTextfield.text!),
+                    let dateText = dateText{
+                    if let dic = expenditureVC?.clothingDic{
+                        if dic.isEmpty{
+                            expenditureVC?.clothingDic[dateText] = [money]
+                        }
+                        else{
+                            for (key, _) in dic{
+                                if key == dateText{
+                                    expenditureVC?.clothingDic[dateText]?.append(money)
+                                    break
+                                }
+                                else{
+                                    expenditureVC?.clothingDic[dateText] = [money]
+                                    break
+                                }
+                            }
+                        }
+                        print(expenditureVC?.clothingDic)
+                    }
+                }
+            }
+            //  住
+            else if type == Type.housing.description{
+                if let money = Int(moneyTextfield.text!),
+                    let dateText = dateText{
+                    if let dic = expenditureVC?.housingDic{
+                        if dic.isEmpty{
+                            expenditureVC?.housingDic[dateText] = [money]
+                        }
+                        else{
+                            for (key, _) in dic{
+                                if key == dateText{
+                                    expenditureVC?.housingDic[dateText]?.append(money)
+                                    break
+                                }
+                                else{
+                                    expenditureVC?.housingDic[dateText] = [money]
+                                    break
+                                }
+                            }
+                        }
+                        print(expenditureVC?.housingDic)
+                    }
+                }
+            }
+            //  行
+            else if type == Type.transportation.description{
+                if let money = Int(moneyTextfield.text!),
+                    let dateText = dateText{
+                    if let dic = expenditureVC?.transportationDic{
+                        if dic.isEmpty{
+                            expenditureVC?.foodDic[dateText] = [money]
+                        }
+                        else{
+                            for (key, _) in dic{
+                                if key == dateText{
+                                    expenditureVC?.transportationDic[dateText]?.append(money)
+                                    break
+                                }
+                                else{
+                                    expenditureVC?.transportationDic[dateText] = [money]
+                                    break
+                                }
+                            }
+                        }
+                        print(expenditureVC?.transportationDic)
+                    }
+                }
+            }
+            //  育
+            else if type == Type.education.description{
+                if let money = Int(moneyTextfield.text!),
+                    let dateText = dateText{
+                    if let dic = expenditureVC?.educationDic{
+                        if dic.isEmpty{
+                            expenditureVC?.educationDic[dateText] = [money]
+                        }
+                        else{
+                            for (key, _) in dic{
+                                if key == dateText{
+                                    expenditureVC?.educationDic[dateText]?.append(money)
+                                    break
+                                }
+                                else{
+                                    expenditureVC?.educationDic[dateText] = [money]
+                                    break
+                                }
+                            }
+                        }
+                        print(expenditureVC?.educationDic)
+                    }
+                }
+            }
+            //  樂
+            else if type == Type.entertainment.description{
+                if let money = Int(moneyTextfield.text!),
+                    let dateText = dateText{
+                    if let dic = expenditureVC?.entertainmentDic{
+                        if dic.isEmpty{
+                            expenditureVC?.entertainmentDic[dateText] = [money]
+                        }
+                        else{
+                            for (key, _) in dic{
+                                if key == dateText{
+                                    expenditureVC?.entertainmentDic[dateText]?.append(money)
+                                    break
+                                }
+                                else{
+                                    expenditureVC?.entertainmentDic[dateText] = [money]
+                                    break
+                                }
+                            }
+                        }
+                        print(expenditureVC?.entertainmentDic)
+                    }
+                }
+            }
         }
     }
     

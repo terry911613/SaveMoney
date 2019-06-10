@@ -32,18 +32,18 @@ class EditIncomeViewController: UIViewController {
             let typeText = type,
             let dateText = dateText{
             
-            let IncomeVC = segue.destination as? IncomeViewController
+            let incomeVC = segue.destination as? IncomeViewController
             if let indexPath = index{
-                IncomeVC?.currentDateIncomeArray[indexPath.row].money = inputMoney
-                IncomeVC?.currentDateIncomeArray[indexPath.row].type = typeText
-                IncomeVC?.currentDateIncomeArray[indexPath.row].date = dateText
-                IncomeVC?.incomeTableView.reloadData()
-                IncomeVC?.animateTableView()
+                incomeVC?.currentDateIncomeArray[indexPath.row].money = inputMoney
+                incomeVC?.currentDateIncomeArray[indexPath.row].type = typeText
+                incomeVC?.currentDateIncomeArray[indexPath.row].date = dateText
+                incomeVC?.incomeTableView.reloadData()
+                incomeVC?.animateTableView()
             }
             
             //  假如編輯過後的錢跟編輯前的錢不一樣才會改掉裡面的值
             if money != inputMoney{
-                if var total = IncomeVC?.totalIncomeDic[dateText]{
+                if var total = incomeVC?.totalIncomeDic[dateText]{
                     for i in 0...total.count-1{
                         if let money = money {
                             if total[i] == money{
@@ -57,8 +57,10 @@ class EditIncomeViewController: UIViewController {
                     for x in total{
                         todayMoney += x
                     }
-                    IncomeVC?.totalIcomeLabel.text = "\(todayMoney)"
-                    IncomeVC?.totalIncomeDic[dateText] = total
+                    if let todayMoney = incomeVC?.formatter.string(from: NSNumber(value: todayMoney)){
+                        incomeVC?.totalIcomeLabel.text = "\(todayMoney)"
+                    }
+                    incomeVC?.totalIncomeDic[dateText] = total
                 }
             }
             

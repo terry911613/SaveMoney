@@ -21,12 +21,14 @@ class IncomeViewController: UIViewController {
     var currentSelectDate = Date()
     var currentSelectDateText: String?
     var totalIncomeDic = [String : [Int]]()
+    let formatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         getDate()
         totalIcomeLabel.text = ""
+        formatter.numberStyle = .currency
         
         //  取今天所有的支出總和
         currentSelectDateText = dateFormatter.string(from: datePicker.date)
@@ -35,6 +37,8 @@ class IncomeViewController: UIViewController {
                 var todayMoney = 0
                 for money in todayMoneyArray{
                     todayMoney += money
+                }
+                if let todayMoney = formatter.string(from: NSNumber(value: todayMoney)){
                     totalIcomeLabel.text = "\(todayMoney)"
                 }
             }
@@ -86,6 +90,8 @@ class IncomeViewController: UIViewController {
                         var todayMoney = 0
                         for money in value{
                             todayMoney += money
+                        }
+                        if let todayMoney = self.formatter.string(from: (NSNumber(value: todayMoney))){
                             self.totalIcomeLabel.text = "\(todayMoney)"
                         }
                         break
@@ -154,7 +160,9 @@ extension IncomeViewController: UITableViewDataSource, UITableViewDelegate{
         let income = currentDateIncomeArray[indexPath.row]
 //        cell.imageView?.image = UIImage(named: "\(expenditure.type)")
         cell.textLabel?.text = "\t類型：\(income.type)"
-        cell.detailTextLabel?.text = "$\(income.money)"
+        if let incomeMoney = formatter.string(from: NSNumber(value: income.money)){
+            cell.detailTextLabel?.text = incomeMoney
+        }
         return cell
     }
 
